@@ -33,5 +33,8 @@
   "bugs": {
     "url": "https://github.com/bahmutov/react-todo-with-hooks/issues"
   },
-  "homepage": "https://github.com/bahmutov/react-todo-with-hooks#readme"
+  "homepage": "https://github.com/bahmutov/react-todo-with-hooks#readme",
+  "devDependencies": {
+    "cypress-react-unit-test": "3.0.0-cypress-mount-mode.5"
+  }
 }

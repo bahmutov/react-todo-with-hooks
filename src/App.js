@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "./App.css";
 
-function Todo({ todo, index, completeTodo, removeTodo }) {
+export function Todo({ todo, index, toggleTodo, removeTodo }) {
+  const toggleText = todo.isCompleted ? 'Redo' : 'Complete'
   return (
     <div
       className="todo"
@@ -10,8 +11,8 @@ function Todo({ todo, index, completeTodo, removeTodo }) {
       {todo.text}
 
       <div>
-        <button onClick={() => completeTodo(index)}>Complete</button>
-        <button onClick={() => removeTodo(index)}>x</button>
+        <button onClick={() => toggleTodo(index)}>{toggleText}</button>
+        <button data-cy="remove" onClick={() => removeTodo(index)}>x</button>
       </div>
     </div>
   );
@@ -55,6 +56,10 @@ function App() {
     }
   ]);
 
+  if (window.Cypress) {
+    window.todos = todos
+  }
+
   const addTodo = text => {
     const newTodos = [...todos, { text }];
     setTodos(newTodos);
@@ -63,6 +68,12 @@ function App() {
   const completeTodo = index => {
     const newTodos = [...todos];
     newTodos[index].isCompleted = true;
+    setTodos(newTodos);
+  };
+
+  const toggleTodo = index => {
+    const newTodos = [...todos];
+    newTodos[index].isCompleted = !newTodos[index].isCompleted;
     setTodos(newTodos);
   };
 
@@ -80,7 +91,7 @@ function App() {
             key={index}
             index={index}
             todo={todo}
-            completeTodo={completeTodo}
+            toggleTodo={toggleTodo}
             removeTodo={removeTodo}
           />
         ))}

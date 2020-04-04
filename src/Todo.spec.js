@@ -24,7 +24,7 @@ describe('App', () => {
       text: 'test item',
       isCompleted: false
     }
-    const TestTodo = () => <div class="app"><Todo todo={todo} /></div>
+    const TestTodo = () => <div className="app"><Todo todo={todo} /></div>
     mount(
       <TestTodo />,
       {

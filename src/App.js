@@ -40,6 +40,15 @@ function TodoForm({ addTodo }) {
   );
 }
 
+export const toggleOneTodo = (todos, index) => {
+  const newTodos = [...todos];
+  const todoToFlip = newTodos[index]
+  if (todoToFlip) {
+    todoToFlip.isCompleted = !todoToFlip.isCompleted;
+  }
+  return newTodos
+};
+
 function App() {
   const [todos, setTodos] = useState([
     {
@@ -72,8 +81,7 @@ function App() {
   };
 
   const toggleTodo = index => {
-    const newTodos = [...todos];
-    newTodos[index].isCompleted = !newTodos[index].isCompleted;
+    const newTodos = toggleOneTodo(todos, index)
     setTodos(newTodos);
   };
 

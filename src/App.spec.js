@@ -1,5 +1,5 @@
 import React from "react";
-import App from "./App";
+import App, {toggleOneTodo} from "./App";
 import {mount} from 'cypress-react-unit-test'
 
 describe('App', () => {
@@ -23,6 +23,36 @@ describe('App', () => {
 
 
     cy.get('.todo').should('have.length', 3)
+  })
+
+  it('toggles correctly', () => {
+    const todos = [{
+      isCompleted: false
+    }, {
+      isCompleted: false
+    }, {
+      isCompleted: false
+    }]
+    const newTodos = toggleOneTodo(todos, 2)
+    expect(newTodos).to.deep.equal([{
+        isCompleted: false
+      }, {
+        isCompleted: false
+      }, {
+        isCompleted: true
+      }])
+  })
+
+  it('ignores invalid index', () => {
+    const todos = [{
+      isCompleted: false
+    }, {
+      isCompleted: false
+    }, {
+      isCompleted: false
+    }]
+    const newTodos = toggleOneTodo(todos, 20)
+    expect(newTodos).to.deep.equal(todos)
   })
 
   it('toggles an item', () => {

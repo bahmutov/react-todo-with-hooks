@@ -19,6 +19,24 @@ describe('App', () => {
     cy.contains('.todo button', 'Complete')
   })
 
+  it('renders with styles', () => {
+    const todo = {
+      text: 'test item',
+      isCompleted: false
+    }
+    const TestTodo = () => <div class="app"><Todo todo={todo} /></div>
+    mount(
+      <TestTodo />,
+      {
+        stylesheets: [
+          'https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css'
+        ],
+        cssFile: 'src/App.css'
+      }
+    )
+    cy.contains('.todo button', 'Complete')
+  })
+
   it('renders completed item', () => {
     const todo = {
       text: 'test item',

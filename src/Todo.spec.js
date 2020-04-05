@@ -2,7 +2,7 @@ import React from "react";
 import {Todo} from "./App";
 import {mount} from 'cypress-react-unit-test'
 
-describe('App', () => {
+describe('Todo', () => {
   it('renders new item', () => {
     const todo = {
       text: 'test item',
@@ -56,7 +56,7 @@ describe('App', () => {
   it('deletes an item', () => {
     const todo = {
       text: 'test item',
-      isCompleted: true,
+      isCompleted: false,
     }
     const removeTodo = cy.stub().as('remove')
 

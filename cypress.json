@@ -1,4 +1,5 @@
 {
+  "baseUrl": "http://localhost:3000",
   "fixturesFolder": false,
   "pluginsFile": "node_modules/cypress-react-unit-test/plugins/cra-v3",
   "supportFile": "node_modules/cypress-react-unit-test/support",

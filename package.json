@@ -13,7 +13,9 @@
     "start-with-coverage": "react-scripts -r @cypress/instrument-cra start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "dev": "start-test start-with-coverage 3000 cy:open",
+    "cy:open": "cypress open"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -37,6 +39,7 @@
   "homepage": "https://github.com/bahmutov/react-todo-with-hooks#readme",
   "devDependencies": {
     "@cypress/instrument-cra": "1.1.0",
+    "cypress": "4.4.0",
     "cypress-react-unit-test": "3.0.0-cypress-mount-mode.10",
     "start-server-and-test": "1.11.0"
   }

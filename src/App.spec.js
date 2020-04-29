@@ -1,5 +1,5 @@
-import React from "react";
-import App, {toggleOneTodo} from "./App";
+import React from "react"
+import App, {toggleOneTodo} from "./App"
 import {mount} from 'cypress-react-unit-test'
 
 describe('App', () => {

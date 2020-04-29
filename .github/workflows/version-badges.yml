@@ -12,7 +12,7 @@ jobs:
       - name: Checkout 🛎
         uses: actions/checkout@v1
       - name: Update version badges 🏷
-        run:
+        run: |
           node scripts/update-version.js cypress
           node scripts/update-version.js cypress-react-unit-test
 

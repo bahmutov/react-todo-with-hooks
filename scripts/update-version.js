@@ -35,7 +35,7 @@ function replaceVersionShield(name, newVersion) {
 
 // replaceVersionShield('cypress', '4.5.1')
 const maybeChangedText = replaceVersionShield(name, currentVersion)
-if (maybeChangedText) {
+if (maybeChangedText !== readmeText) {
   console.log('saving updated readme with %s@%s', name, currentVersion)
   fs.writeFileSync(readmeFilename, maybeChangedText, 'utf8')
 }

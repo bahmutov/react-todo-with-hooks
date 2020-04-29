@@ -1,6 +1,8 @@
 {
-  "baseUrl": "http://localhost:3000",
   "fixturesFolder": false,
-  "viewportHeight": 300,
-  "viewportWidth": 400
+  "testFiles": "**/*spec.js",
+  "viewportWidth": 600,
+  "viewportHeight": 600,
+  "experimentalComponentTesting": true,
+  "componentFolder": "src"
 }

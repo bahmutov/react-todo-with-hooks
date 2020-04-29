@@ -6,7 +6,7 @@
   "dependencies": {
     "react": "16",
     "react-dom": "16",
-    "react-scripts": "3.1"
+    "react-scripts": "3.2"
   },
   "scripts": {
     "start": "react-scripts -r @cypress/instrument-cra start",
@@ -39,7 +39,8 @@
   "devDependencies": {
     "@cypress/code-coverage": "3.1.0",
     "@cypress/instrument-cra": "1.1.0",
-    "cypress": "4.4.0",
-    "start-server-and-test": "1.10.11"
+    "cypress": "4.5.0",
+    "cypress-react-unit-test": "4.0.0",
+    "start-server-and-test": "1.11.0"
   }
 }

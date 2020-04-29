@@ -1,0 +1,23 @@
+name: Version badges
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: Badges
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@v1
+      - name: Update version badges 🏷
+        run:
+          node scripts/update-version.js cypress
+          node scripts/update-version.js cypress-react-unit-test
+
+      # commit any changed files
+      # https://github.com/mikeal/publish-to-github-action
+      - uses: mikeal/publish-to-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

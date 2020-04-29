@@ -1,4 +1,4 @@
-# react-todo-with-hooks
+# react-todo-with-hooks [![CircleCI](https://circleci.com/gh/bahmutov/react-todo-with-hooks/tree/master.svg?style=svg)](https://circleci.com/gh/bahmutov/react-todo-with-hooks/tree/master)
 
 Example application copied from [codesandbox](https://codesandbox.io/s/oj3qm2zq06) from blog post [How To Build a React To-Do App with React Hooks](https://www.digitalocean.com/community/tutorials/how-to-build-a-react-to-do-app-with-react-hooks).
 

@@ -4,6 +4,8 @@ Example application copied from [codesandbox](https://codesandbox.io/s/oj3qm2zq0
 
 End-to-end and component tests using [Cypress](http://github.com/cypress-io/cypress) and [cypress-react-unit-test](https://github.com/bahmutov/cypress-react-unit-test)
 
+![App component test](images/app-test.gif)
+
 Test | Description
 --- | ---
 [cypress/integration/todo.spec.js](cypress/integration/todo.spec.js) | End-to-end test against application running at `localhost:3000`

@@ -18,7 +18,7 @@ export function Todo({ todo, index, toggleTodo, removeTodo }) {
   );
 }
 
-function TodoForm({ addTodo }) {
+export function TodoForm({ addTodo }) {
   const [value, setValue] = useState("");
 
   const handleSubmit = e => {

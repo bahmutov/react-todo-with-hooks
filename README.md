@@ -8,6 +8,7 @@ Test | Description
 --- | ---
 [cypress/integration/todo.spec.js](cypress/integration/todo.spec.js) | End-to-end test against application running at `localhost:3000`
 [src/Todo.spec.js](src/Todo.spec.js) | Component test for `Todo` exported from `src/App.js`
+[src/TodoForm.spec.js](src/TodoForm.spec.js) | Component test confirming `TodoForm` ignores empty input
 [src/App.spec.js](src/App.spec.js) | Component test for `App` and unit test for `toggleOneTodo` exported from `src/App.js`
 
 Tests capture code coverage, see created folder `coverage`

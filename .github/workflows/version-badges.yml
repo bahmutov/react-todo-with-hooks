@@ -16,10 +16,11 @@ jobs:
     steps:
       - name: Checkout 🛎
         uses: actions/checkout@v1
+
       - name: Update version badges 🏷
         run: |
-          npx update-badge cypress
-          npx update-badge cypress-react-unit-test
+          npx -p dependency-version-badge update-badge cypress
+          npx -p dependency-version-badge update-badge cypress-react-unit-test
 
       # commit any changed files
       # https://github.com/mikeal/publish-to-github-action

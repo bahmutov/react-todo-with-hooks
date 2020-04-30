@@ -1,8 +1,13 @@
 name: Version badges
+# update README badge only if the README file changes
+# or if the package.json file changes
 on:
   push:
     branches:
       - master
+    paths:
+      - README.md
+      - package.json
 
 jobs:
   build:
@@ -13,8 +18,8 @@ jobs:
         uses: actions/checkout@v1
       - name: Update version badges 🏷
         run: |
-          node scripts/update-version.js cypress
-          node scripts/update-version.js cypress-react-unit-test
+          npx update-badge cypress
+          npx update-badge cypress-react-unit-test
 
       # commit any changed files
       # https://github.com/mikeal/publish-to-github-action

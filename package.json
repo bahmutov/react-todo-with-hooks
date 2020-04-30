@@ -40,6 +40,7 @@
     "@cypress/instrument-cra": "1.1.1",
     "cypress": "4.5.0",
     "cypress-react-unit-test": "4.0.1",
+    "dependency-version-badge": "1.0.0",
     "start-server-and-test": "1.11.0"
   }
 }

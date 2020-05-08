@@ -1,4 +1,4 @@
-# react-todo-with-hooks [![CircleCI](https://circleci.com/gh/bahmutov/react-todo-with-hooks/tree/master.svg?style=svg)](https://circleci.com/gh/bahmutov/react-todo-with-hooks/tree/master) ![Cypress version](https://img.shields.io/badge/cypress-4.5.0-brightgreen) ![cypress-react-unit-test version](https://img.shields.io/badge/cypress--react--unit--test-4.2.0-brightgreen) [![renovate-app badge][renovate-badge]][renovate-app]
+# react-todo-with-hooks [![CircleCI](https://circleci.com/gh/bahmutov/react-todo-with-hooks/tree/master.svg?style=svg)](https://circleci.com/gh/bahmutov/react-todo-with-hooks/tree/master) ![Cypress version](https://img.shields.io/badge/cypress-4.5.0-brightgreen) ![cypress-react-unit-test version](https://img.shields.io/badge/cypress--react--unit--test-4.2.1-brightgreen) [![renovate-app badge][renovate-badge]][renovate-app]
 
 End-to-end and component tests using [Cypress](http://github.com/cypress-io/cypress) and [cypress-react-unit-test](https://github.com/bahmutov/cypress-react-unit-test), read [My Vision for Component Tests in Cypress](https://glebbahmutov.com/blog/my-vision-for-component-tests/).
 

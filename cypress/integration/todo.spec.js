@@ -18,7 +18,7 @@ describe('Todo App', () => {
     cy.log('**removing a todo**')
     // due to quarantine, we have to delete an item
     // without completing it
-    cy.contains('.todo', 'Meet friend for lunch').contains('button', 'x').click()
+    cy.contains('.todo', 'Meet friend for lunch').contains('button', 'Y').click()
     cy.contains('.todo', 'Meet friend for lunch').should('not.exist')
   })
 })

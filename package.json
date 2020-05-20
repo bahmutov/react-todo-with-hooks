@@ -39,7 +39,9 @@
   "devDependencies": {
     "@cypress/instrument-cra": "1.1.1",
     "cypress": "4.6.0",
-    "cypress-react-unit-test": "4.2.2",
-    "start-server-and-test": "1.11.0"
+    "cypress-react-unit-test": "4.2.3",
+    "sinon": "9.0.2",
+    "start-server-and-test": "1.11.0",
+    "ts-mock-imports": "1.3.0"
   }
 }

@@ -1,50 +1,70 @@
-Running "standard" plugins with
+# Single spec headless mode
+
+## Current bundling
+
+Running "standard" plugin with
 
 ```shell
 $ DEBUG=cypress:webpack:stats npx cypress run --spec src/Todo.spec.js
 ```
 
-Support file: 2400ms, spec file 3000ms
+Support file: 1545ms (42 KiB)
+spec file: 2057ms (2.67 MiB)
 
-
-```
-Hash: 802dc9b4df39f7ff3b3d
-Version: webpack 4.43.0
-Time: 2391ms
-Built at: 05/23/2020 3:28:49 PM
-   Asset      Size  Chunks             Chunk Names
-index.js  40.2 KiB    main  [emitted]  main
-Entrypoint main = index.js
-[0] multi ./cypress/support/index.js 28 bytes {main} [built]
-[./cypress/support/index.js] 43 bytes {main} [built]
-[./node_modules/@cypress/code-coverage/support-utils.js] 2.13 KiB {main} [built]
-[./node_modules/@cypress/code-coverage/support.js] 7.6 KiB {main} [built]
-[./node_modules/cypress-react-unit-test/dist/hooks.js] 1.26 KiB {main} [built]
-[./node_modules/cypress-react-unit-test/support/index.js] 257 bytes {main} [built]
-Hash: 20de795d38861070d550
-Version: webpack 4.43.0
-Time: 3096ms
-Built at: 05/23/2020 3:28:49 PM
-       Asset      Size  Chunks             Chunk Names
-Todo.spec.js  2.69 MiB    main  [emitted]  main
-Entrypoint main = Todo.spec.js
-[0] multi ./src/Todo.spec.js 28 bytes {main} [built]
-[./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/arrayWithHoles.js] 86 bytes {main} [built]
-[./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/iterableToArrayLimit.js] 579 bytes {main} [built]
-[./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/nonIterableRest.js] 210 bytes {main} [built]
-[./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/slicedToArray.js] 397 bytes {main} [built]
-[./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/unsupportedIterableToArray.js] 492 bytes {main} [built]
-[./node_modules/cypress-react-unit-test/dist/getDisplayName.js] 1.67 KiB {main} [built]
-[./node_modules/cypress-react-unit-test/dist/index.js] 4.99 KiB {main} [built]
-[./node_modules/cypress-react-unit-test/dist/utils.js] 3 KiB {main} [built]
-[./node_modules/react-dom/index.js] 1.32 KiB {main} [built]
-[./node_modules/react/cjs/react.development.js] 65.5 KiB {main} [built]
-[./node_modules/react/index.js] 189 bytes {main} [built]
-[./src/App.css] 472 bytes {main} [built]
-[./src/App.js] 21.3 KiB {main} [built] [1 warning]
-[./src/Todo.spec.js] 12.4 KiB {main} [built]
-    + 12 hidden modules
-```
+## Using externals
 
 Running using [cypress/plugins/externals.js](cypress/plugins/externals.js)
 
+Externals: 300ms
+Support file: 3000ms (51.8 KiB)
+Spec file: 190ms (31.1 KiB)
+
+
+```
+bundling externals
+*******
+2020-06-19T17:37:38.589Z
+*******
+Hash: 45576efb8aff33a9b9a1
+Version: webpack 4.43.0
+Time: 304ms
+Built at: 06/19/2020 1:37:38 PM
+                            Asset      Size  Chunks             Chunk Names
+externals-cypressReactUnitTest.js  5.39 KiB       0  [emitted]  cypressReactUnitTest
+               externals-react.js  8.41 KiB       1  [emitted]  react
+            externals-reactDom.js   121 KiB       2  [emitted]  reactDom
+Entrypoint react = externals-react.js
+Entrypoint reactDom = externals-reactDom.js
+Entrypoint cypressReactUnitTest = externals-cypressReactUnitTest.js
+```
+
+Spec file bundle
+
+```
+Hash: 38447fc2ae99ed1cf01e
+Version: webpack 4.43.0
+Time: 190ms
+Built at: 06/19/2020 1:40:22 PM
+       Asset      Size  Chunks             Chunk Names
+Todo.spec.js  31.1 KiB    main  [emitted]  main
+Entrypoint main = Todo.spec.js
+[./src/App.js] 4.16 KiB {main} [built]
+[./src/Todo.spec.js] 2.3 KiB {main} [built]
+[cypress-react-unit-test] external "cypressReactUnitTest" 42 bytes {main} [built]
+[react] external "react" 42 bytes {main} [built]
+```
+
+# Multiple specs headless mode
+
+Filename | Current (ms) | Externals (ms)
+--- | --- | ---
+Externals | 0 | 400
+Support | 3000 | 3000
+todo.spec.js | 3000 | 40
+App.spec.js | 1400 | 150
+Todo.spec.js | 410 | 100
+TodoForm.spec.js | 850 | 120
+
+# Interactive mode
+
+Bundling externals means every spec is fast, taking 40-150ms to load, while the current bundling has a noticeable delay.

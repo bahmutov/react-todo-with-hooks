@@ -49,13 +49,13 @@ const webpackVendorOptions = {
   externals,
   mode: 'production',
   stats: 'verbose',
-  devtool: false,
+  // devtool: false,
 }
 
 console.log(webpackVendorOptions.entry)
 // const compiler = webpack(webpackVendorOptions)
 
-const bundleSpecFile = async (inputFilePath, outputFilePath) => {
+const bundleSpecFile = async (inputFilePath, outputFilePath, sourceMaps = 'inline-source-map') => {
   const webpackSpecOptions = {
     entry: inputFilePath,
     output: {
@@ -65,7 +65,8 @@ const bundleSpecFile = async (inputFilePath, outputFilePath) => {
     externals,
     mode: 'development',
     stats: 'verbose',
-    devtool: 'inline-source-map',
+    devtool: sourceMaps,
+    // devtool: 'inline-source-map',
     // devtool: 'cheap-source-maps',
     module: {
       rules: [
@@ -110,7 +111,7 @@ module.exports = async (on, config) => {
   // we can also bundle support file right away
   console.log('bundling support file %s', config.supportFile)
   const bundledSpecFilename = path.resolve('./support-bundle.js')
-  await bundleSpecFile(config.supportFile, bundledSpecFilename)
+  await bundleSpecFile(config.supportFile, bundledSpecFilename, false)
   console.log('finished bundling support to', bundledSpecFilename)
 
   const outputSrc = fs.readFileSync(bundledSpecFilename, 'utf8')

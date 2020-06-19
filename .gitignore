@@ -3,3 +3,4 @@ coverage
 .nyc_output
 dist
 cypress/videos
+cypress/screenshots

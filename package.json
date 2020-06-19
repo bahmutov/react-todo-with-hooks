@@ -38,8 +38,13 @@
   "homepage": "https://github.com/bahmutov/react-todo-with-hooks#readme",
   "devDependencies": {
     "@cypress/instrument-cra": "1.1.1",
-    "cypress": "4.6.0",
-    "cypress-react-unit-test": "4.2.3",
-    "start-server-and-test": "1.11.0"
+    "cypress": "4.8.0",
+    "cypress-react-unit-test": "4.7.2",
+    "start-server-and-test": "1.11.0",
+    "webpack": "4.43.0",
+    "@babel/core": "7.9.6",
+    "@babel/preset-env": "7.9.6",
+    "@babel/preset-react": "7.9.4",
+    "babel-loader": "8.1.0"
   }
 }

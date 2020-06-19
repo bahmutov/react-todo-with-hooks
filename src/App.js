@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./App.css";
+// import "./App.css";
 
 export function Todo({ todo, index, toggleTodo, removeTodo }) {
   const toggleText = todo.isCompleted ? 'Redo' : 'Complete'

@@ -70,3 +70,10 @@ Hmm, unclear why support file takes so long to bundle compared to others. But it
 # Interactive mode
 
 Bundling externals means every spec is fast, taking 40-150ms to load, while the current bundling has a noticeable delay.
+
+Filename | Current (ms) | Externals (ms)
+--- | --- | ---
+todo.spec.js | 1000 | 40
+App.spec.js | 1700 | 200
+Todo.spec.js | 860 | 140
+TodoForm.spec.js | 850 | 190

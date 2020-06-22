@@ -6,5 +6,5 @@
   "experimentalComponentTesting": true,
   "componentFolder": "src",
   "//baseUrl": "http://localhost:3000",
-  "pluginsFile": "cypress/plugins/externals.js"
+  "//pluginsFile": "cypress/plugins/externals.js"
 }

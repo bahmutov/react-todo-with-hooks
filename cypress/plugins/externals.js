@@ -88,14 +88,35 @@ const bundleSpecFile = async (inputFilePath, outputFilePath, sourceMaps = 'inlin
   return outputFilePath
 }
 
+const bundleVendor = () => {
+  console.log('bundling externals')
+  return runWebpack(webpackVendorOptions)
+}
+
+const bundleSupport = async (config) => {
+  console.log('bundling support file %s', config.supportFile)
+  const bundledSpecFilename = path.resolve('./support-bundle.js')
+  await bundleSpecFile(config.supportFile, bundledSpecFilename, false)
+  console.log('finished bundling support to', bundledSpecFilename)
+
+
+}
+
 /**
  * @type {Cypress.PluginConfig}
  */
 module.exports = async (on, config) => {
   // require('cypress-react-unit-test/plugins/cra-v3')(on, config)
 
-  console.log('bundling externals')
-  await runWebpack(webpackVendorOptions)
+  // key is fileEvent.filePath
+  const bundles = {}
+
+  console.log('bundling vendor and support in parallel')
+  const started = + new Date()
+  await Promise.all([
+    bundleVendor(),
+    bundleSupport(config)
+  ])
 
   // read generated external bundles into memory
   const cypressReactUnitTest = fs.readFileSync(fromDist('externals-cypressReactUnitTest.js'), 'utf8')
@@ -105,14 +126,7 @@ module.exports = async (on, config) => {
   console.log('read external bundles into memory')
   console.log('vendor source length', vendorSource.length)
 
-  // key is fileEvent.filePath
-  const bundles = {}
-
-  // we can also bundle support file right away
-  console.log('bundling support file %s', config.supportFile)
   const bundledSpecFilename = path.resolve('./support-bundle.js')
-  await bundleSpecFile(config.supportFile, bundledSpecFilename, false)
-  console.log('finished bundling support to', bundledSpecFilename)
 
   const outputSrc = fs.readFileSync(bundledSpecFilename, 'utf8')
   console.log('file %s length %d', bundledSpecFilename, outputSrc.length)
@@ -120,6 +134,9 @@ module.exports = async (on, config) => {
   console.log('full source length %d', fullSrc.length)
   fs.writeFileSync(bundledSpecFilename, fullSrc, 'utf8')
   console.log('written full file', bundledSpecFilename)
+  const finished = + new Date()
+  console.log('support prep work done in %dms', finished - started)
+
   bundles[config.supportFile] = Promise.resolve(bundledSpecFilename)
 
   on('file:preprocessor', (fileEvent) => {

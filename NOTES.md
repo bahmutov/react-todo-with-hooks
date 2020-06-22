@@ -65,6 +65,8 @@ App.spec.js | 1400 | 150
 Todo.spec.js | 410 | 100
 TodoForm.spec.js | 850 | 120
 
+Hmm, unclear why support file takes so long to bundle compared to others. But it is done in parallel with externals, so the final time is the same (about 3 seconds at the start).
+
 # Interactive mode
 
 Bundling externals means every spec is fast, taking 40-150ms to load, while the current bundling has a noticeable delay.

@@ -38,7 +38,7 @@
   "homepage": "https://github.com/bahmutov/react-todo-with-hooks#readme",
   "devDependencies": {
     "@cypress/instrument-cra": "1.4.0",
-    "cypress": "4.12.1",
+    "cypress": "7.5.0",
     "cypress-react-unit-test": "4.17.2",
     "start-server-and-test": "1.11.0"
   }
